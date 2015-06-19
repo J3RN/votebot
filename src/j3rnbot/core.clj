@@ -56,10 +56,9 @@
 (defn rapsheet [irc args]
   (or
     (not-empty
-      (map #(do
-              (reply irc args
+      (map #(reply irc args
                    (str "* " (key %) ": "
-                        (string/join ", " (map :nick (val %))))))
+                        (string/join ", " (map :nick (val %)))))
            (group-by :item (select votes
                                    (with users)
                                    (where {:old false})))))
