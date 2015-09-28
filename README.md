@@ -28,6 +28,12 @@ What does it do? It's counts votes. That is all.
 - "beep": Replies "boop"
 - "help": Lists summary of commands
 
+##Dependencies
+- Java 1.6 or greater (required for clojure)
+- Clojure
+- Leiningen
+- PostgreSQL
+
 ## Setup
 To get Votebot running, you're going to need to set up a PostgreSQL database
 for it.
@@ -58,3 +64,9 @@ The bot requires a file named `settings.json`. I have included an example file c
 - `"db-name"`: PostgreSQL database name
 - `"db-user"`: User with access to the database
 - `"db-pass"`: Password for user to access the database
+
+## Running
+Ensure that postgreSQL is working correctly then in the votebot folder run: 
+```bash
+ lein run
+```
