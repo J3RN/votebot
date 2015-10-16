@@ -190,8 +190,9 @@
   (reply irc args
          (if (not (first (select users (where {:nick nick}))))
            (str nick " is not whitelisted")
-           (do
-             (delete users (where {:nick nick}))
+           (let [user_id (get (first (select users (where {:nick nick}))) :id)]
+             (delete users (where {:id user_id}))
+             (delete votes (where {:users_id user_id}))
              (str nick " is removed from the whitelist")))))
 
 ;;; Process revelant commands
