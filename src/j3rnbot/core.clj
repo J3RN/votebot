@@ -186,6 +186,13 @@
              "That nick is wayyyy too long")
            (str nick " is already whitelisted"))))
 
+(defn unwhitelist! [irc args nick]
+  (reply irc args
+         (if (not (first (select users (where {:nick nick}))))
+           (str nick " is not whitelisted")
+           (do
+             (delete users (where {:nick nick}))
+             (str nick " is removed from the whitelist")))))
 
 ;;; Process revelant commands
 
@@ -225,6 +232,9 @@
     ".whitelist"
     (let [nick (get tokens 1)]
       (whitelist! irc args nick))
+    ".unwhitelist"
+    (let [nick (get tokens 1)]
+      (unwhitelist! irc args nick))
     ".vote-as"
     (let [nick (get tokens 1)
           vote (get tokens 2)]
