@@ -259,6 +259,8 @@
     (reply irc args "boop")
     ("help" "halp")
     (reply irc args "Currently, I support: .votes, .vote [item], .rmvote, .count, .whodunnit [item], .whosvoted, .whathaveyoudone [nick]")
+    "ping"
+    (reply irc args "PONG")
     ()))
 
 ;;; Callback and start
